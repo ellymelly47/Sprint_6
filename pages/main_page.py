@@ -4,9 +4,6 @@ from pages.base_page import BasePage
 
 
 class MainPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def click_on_question(self, num):
         method, locator = MainPageLocators.QUESTION_ACCORDION
         locator = locator.format(num)

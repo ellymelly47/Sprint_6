@@ -3,9 +3,6 @@ from pages.base_page import BasePage
 
 
 class HeaderPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def go_to_order_page_by_header_order_button(self):
         self.driver.find_element(*HeaderLocators.HEADER_ORDER_BUTTON).click()
 

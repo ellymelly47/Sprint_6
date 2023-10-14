@@ -3,9 +3,6 @@ from pages.base_page import BasePage
 
 
 class OrderPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def fill_name(self, name):
         self.driver.find_element(*OrderPageLocators.INPUT_NAME).send_keys(name)
 
