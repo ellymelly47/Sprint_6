@@ -1,8 +1,5 @@
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-
+from locators.base_page_locators import BasePageLocators
 from locators.main_page_locators import MainPageLocators
-from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
 
 
@@ -23,5 +20,5 @@ class MainPage(BasePage):
     def go_to_order_page_by_main_page_order_button(self):
         self.driver.find_element(*MainPageLocators.MAIN_PAGE_ORDER_BUTTON).click()
 
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(
-            OrderPageLocators.NEXT_BUTTON))
+    def agree_with_cookie(self):
+        self.click_on_element(5, BasePageLocators.COOKIE_AGREE_BUTTON)

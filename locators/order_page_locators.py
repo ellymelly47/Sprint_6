@@ -43,11 +43,5 @@ class OrderPageLocators:
 
     ORDER_YES_BUTTON = By.XPATH, '//button[text()="Да"]'  # кнопка "Да" во всплывающем окне подтверждения заказа
 
-    ORDER_CONFIRM_TITLE = By.XPATH, '//div[text()="Хотите оформить заказ?"]'
-    # заголовок "Хотите оформить заказ?" во всплывающем окне подтверждения заказа
-
-    CHECK_STATUS_BUTTON = By.XPATH, '//button[text()="Посмотреть статус"]'
-    # кнопка "Посмотреть статус" в окне успешного заказа
-
     ORDER_SUCCESS_TITLE = By.XPATH, '//div[text()="Заказ оформлен"]'
     # заголовок "Заказ оформлен" в окне успешного заказа

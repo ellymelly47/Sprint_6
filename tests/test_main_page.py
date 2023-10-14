@@ -1,5 +1,6 @@
 import pytest
 from data import FaqAnswers
+from locators.base_page_locators import BasePageLocators
 from pages.base_page import BasePage
 from pages.main_page import MainPage
 
@@ -18,10 +19,12 @@ class TestMainPage:
          (7, FaqAnswers.answer_7)]
     )
     def test_faq(self, driver, num, e_result):
-        base_page = BasePage(driver)
-        base_page.open_site()
-
         main_page = MainPage(driver)
+        main_page.agree_with_cookie()
+
+        base_page = BasePage(driver)
+        base_page.wait_until_element_invisibility(3, BasePageLocators.COOKIE_INFO_BLOCK)
+
         main_page.click_on_question(num)
         answer = main_page.get_answer(num)
 
