@@ -1,3 +1,4 @@
+import allure
 import pytest
 from data import FaqAnswers
 from locators.base_page_locators import BasePageLocators
@@ -7,6 +8,7 @@ from pages.main_page import MainPage
 
 class TestMainPage:
 
+    @allure.title('Проверка работы выпадающего списка вопросов в блоке "Вопросы о важном"')
     @pytest.mark.parametrize(
         'num, e_result',
         [(0, FaqAnswers.answer_0),

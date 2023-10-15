@@ -1,3 +1,5 @@
+import allure
+
 from data import OrderName, OrderSurname, OrderAddress, OrderPhone, CommentToDriver
 from locators.base_page_locators import BasePageLocators
 from locators.order_page_locators import OrderPageLocators
@@ -9,6 +11,7 @@ from pages.order_page import OrderPage
 
 class TestOrderPage:
 
+    @allure.title('Проверка успешного заказа: заполнение всех полей + минимальные значения параметров')
     def test_order_by_header_order_button(self, driver):
         main_page = MainPage(driver)
         main_page.agree_with_cookie()
@@ -42,6 +45,7 @@ class TestOrderPage:
         assert base_page.find_the_element(3, OrderPageLocators.ORDER_SUCCESS_TITLE).is_displayed(), \
             'Создание заказа завершилось ошибкой'
 
+    @allure.title('Проверка успешного заказа: заполнение обязательных полей + максимальные значения параметров')
     def test_order_by_main_page_order_button(self, driver):
         main_page = MainPage(driver)
         main_page.agree_with_cookie()

@@ -1,3 +1,4 @@
+import allure
 from locators.base_page_locators import BasePageLocators
 from locators.order_page_locators import OrderPageLocators
 from locators.main_page_locators import MainPageLocators
@@ -9,6 +10,7 @@ from pages.main_page import MainPage
 
 class TestHeaderPage:
 
+    @allure.title('Проверка редиректа по клику на логотип "Самокат" в хедере')
     def test_redirect_by_scooter_logo(self, driver):
         main_page = MainPage(driver)
         main_page.agree_with_cookie()
@@ -24,6 +26,7 @@ class TestHeaderPage:
         assert base_page.find_the_element(3, MainPageLocators.MAIN_PAGE_ORDER_BUTTON).is_displayed(), \
             'Не удалось перейти на главную страницу по клику на логотип "Самокат"'
 
+    @allure.title('Проверка редиректа по клику на логотип "Яндекс" в хедере')
     def test_redirect_by_yandex_logo(self, driver):
         main_page = MainPage(driver)
         main_page.agree_with_cookie()
