@@ -1,6 +1,5 @@
 import allure
 from data import user_1, user_2
-from locators.base_page_locators import BasePageLocators
 from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
 from pages.header_page import HeaderPage
@@ -11,15 +10,10 @@ from pages.order_page import OrderPage
 class TestOrderPage:
 
     @allure.title('Проверка успешного заказа: заполнение всех полей + минимальные значения параметров')
-    def test_order_by_header_order_button(self, driver):
-        main_page = MainPage(driver)
-        main_page.agree_with_cookie()
-
-        base_page = BasePage(driver)
-        base_page.wait_until_element_invisibility(3, BasePageLocators.COOKIE_INFO_BLOCK)
-
+    def test_order_by_header_order_button(self, driver, agree_with_cookie):
         header_page = HeaderPage(driver)
         header_page.go_to_order_page_by_header_order_button()
+        base_page = BasePage(driver)
         base_page.wait_until_element_visibility(3, OrderPageLocators.NEXT_BUTTON)
 
         order_page = OrderPage(driver)
@@ -45,13 +39,10 @@ class TestOrderPage:
             'Создание заказа завершилось ошибкой'
 
     @allure.title('Проверка успешного заказа: заполнение обязательных полей + максимальные значения параметров')
-    def test_order_by_main_page_order_button(self, driver):
+    def test_order_by_main_page_order_button(self, driver, agree_with_cookie):
         main_page = MainPage(driver)
-        main_page.agree_with_cookie()
-
-        base_page = BasePage(driver)
-        base_page.wait_until_element_invisibility(3, BasePageLocators.COOKIE_INFO_BLOCK)
         main_page.go_to_order_page_by_main_page_order_button()
+        base_page = BasePage(driver)
         base_page.wait_until_element_visibility(3, OrderPageLocators.NEXT_BUTTON)
 
         order_page = OrderPage(driver)

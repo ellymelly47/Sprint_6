@@ -24,3 +24,4 @@ class MainPage(BasePage):
     @allure.step('Скрываем всплывающий блок с информацией о cookie кликом на кнопку "да все привыкли"')
     def agree_with_cookie(self):
         self.click_on_element(5, BasePageLocators.COOKIE_AGREE_BUTTON)
+        self.wait_until_element_invisibility(3, BasePageLocators.COOKIE_INFO_BLOCK)
