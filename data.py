@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+from typing import Optional
+
+
 class FaqAnswers:
     answer_0 = 'Сутки — 400 рублей. Оплата курьеру — наличными или картой.'
     answer_1 = 'Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.'
@@ -9,25 +13,24 @@ class FaqAnswers:
     answer_7 = 'Да, обязательно. Всем самокатов! И Москве, и Московской области.'
 
 
-class OrderName:
-    name_1 = 'Те'
-    name_2 = 'БорисБорисБорис'
+@dataclass
+class User:
+    name: str
+    surname: str
+    address: str
+    phone: str
+    comment: Optional[str] = None
 
 
-class OrderSurname:
-    surname_1 = 'Ст'
-    surname_2 = 'БорисоввБорисов'
+user_1 = User(
+    name='Те',
+    surname='Ст',
+    address='Москв',
+    phone='81234567890',
+    comment='тестовый заказ')
 
-
-class OrderAddress:
-    address_1 = 'Москв'
-    address_2 = 'Москва, проспект Мира,  д. 26, вход со стороны ул'
-
-
-class OrderPhone:
-    phone_1 = '81234567890'
-    phone_2 = '+123456789012'
-
-
-class CommentToDriver:
-    comment = 'тестовый заказ'
+user_2 = User(
+    name='БорисБорисБорис',
+    surname='БорисоввБорисов',
+    address='Москва, проспект Мира,  д. 26, вход со стороны ул',
+    phone='+123456789012')
