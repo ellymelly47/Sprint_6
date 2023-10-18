@@ -15,7 +15,7 @@ class MainPage(BasePage):
     def get_answer(self, num):
         method, locator = MainPageLocators.ANSWER_ACCORDION
         locator = locator.format(num)
-        return self.driver.find_element(method, locator).text
+        return self.get_text_from_element((method, locator))
 
     @allure.step('Переходим на страницу заказа при клике на кнопку "Заказать" на главной стр.')
     def go_to_order_page_by_main_page_order_button(self):

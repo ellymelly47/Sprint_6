@@ -6,19 +6,19 @@ from pages.base_page import BasePage
 class OrderPage(BasePage):
     @allure.step('Заполняем имя в инпуте "Имя"')
     def fill_name(self, name):
-        self.driver.find_element(*OrderPageLocators.INPUT_NAME).send_keys(name)
+        self.send_keys_to_element(OrderPageLocators.INPUT_NAME, name)
 
     @allure.step('Заполняем фамилию в инпуте "Фамилия"')
     def fill_surame(self, surname):
-        self.driver.find_element(*OrderPageLocators.INPUT_SURNAME).send_keys(surname)
+        self.send_keys_to_element(OrderPageLocators.INPUT_SURNAME, surname)
 
     @allure.step('Заполняем адрес в инпуте "Адрес.."')
     def fill_address(self, address):
-        self.driver.find_element(*OrderPageLocators.INPUT_ADDRESS).send_keys(address)
+        self.send_keys_to_element(OrderPageLocators.INPUT_ADDRESS, address)
 
     @allure.step('Заполняем телефон в инпуте "Телефон.."')
     def fill_phone(self, phone):
-        self.driver.find_element(*OrderPageLocators.INPUT_PHONE).send_keys(phone)
+        self.send_keys_to_element(OrderPageLocators.INPUT_PHONE, phone)
 
     @allure.step('Устанавливаем фокус в инпуте "Станция метро"')
     def focus_on_input_metro(self):
@@ -31,7 +31,7 @@ class OrderPage(BasePage):
     @allure.step('Выбираем метро из последних станций выпадающего списка метро (после скролла)')
     def choose_metro_from_end_of_list(self):
         metro = self.find_the_element(3, OrderPageLocators.METRO_OPTION_END_OF_LIST)
-        self.driver.execute_script("arguments[0].scrollIntoView();", metro)
+        self.scroll_to_element(metro)
         self.click_on_element(3, OrderPageLocators.METRO_OPTION_END_OF_LIST)
 
     @allure.step('Переходим ко второй части формы заказа кликом на кнопку "Далее"')
@@ -62,7 +62,7 @@ class OrderPage(BasePage):
     @allure.step('Выбираем максимальный срок аренды: семеро суток')
     def choose_max_rental_period(self):
         max_period = self.find_the_element(3, OrderPageLocators.RENTAL_PERIOD_MAX)
-        self.driver.execute_script("arguments[0].scrollIntoView(); arguments[0].click();", max_period)
+        self.scroll_and_click(max_period)
 
     @allure.step('Выбираем цвет самоката: ставим галку в чекбоксе "черный жемчуг"')
     def choose_black_color(self):
@@ -70,7 +70,7 @@ class OrderPage(BasePage):
 
     @allure.step('Заполняем комментарий в инпуте "Комментарий для курьера"')
     def fill_comment(self, comment):
-        self.driver.find_element(*OrderPageLocators.INPUT_COMMENT).send_keys(comment)
+        self.send_keys_to_element(OrderPageLocators.INPUT_COMMENT, comment)
 
     @allure.step('Подтверждаем оформление заказа кликом на кнопку "Заказать", и далее кликом на кнопку "Да"')
     def submit_order(self):

@@ -32,3 +32,19 @@ class BasePage:
     @allure.step('Переключаемся на другую открытую вкладку')
     def switch_to_new_window(self):
         self.driver.switch_to.window(self.driver.window_handles[1])
+
+    @allure.step('Получаем текст элемента')
+    def get_text_from_element(self, element_locator):
+        return self.driver.find_element(*element_locator).text
+
+    @allure.step('Записываем значение в поле')
+    def send_keys_to_element(self, element_locator, value):
+        self.driver.find_element(*element_locator).send_keys(value)
+
+    @allure.step('Делаем скролл до нужного элемента')
+    def scroll_to_element(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    @allure.step('Делаем скролл до нужного элемента и кликаем на него')
+    def scroll_and_click(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView(); arguments[0].click();", element)
